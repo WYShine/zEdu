@@ -5,6 +5,20 @@ use Illuminate\Database\Eloquent\Model;
 class Zcourse extends Model {
 
     /**
+     * The database table used by the model.
+     *
+     * @var string
+     */
+    protected $table = 'zcourses';
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [];
+
+    /**
      * Many to one relationship: user
      *
      * The applicant of this course. It must be a user with teacher/admin role.
