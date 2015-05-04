@@ -22,7 +22,9 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['name', 'email', 'password'];
+	protected $fillable = ['name', 'email', 'password',
+        'gender', 'phone', 'organization', 'department',
+        'position', 'role'];
 
 	/**
 	 * The attributes excluded from the model's JSON form.
@@ -31,4 +33,35 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 */
 	protected $hidden = ['password', 'remember_token'];
 
+
+    /**
+     * One to one relationship: zaccount
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    protected function zaccount() {
+        return $this->hasOne('App\Zaccount');
+    }
+
+    /**
+     * One to many relationship: applied_courses
+     *
+     * A user with teacher/admin role may apply courses
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    protected function applied_courses() {
+        return $this->hasMany('App\Zcourses');
+    }
+
+    /**
+     * One to many relationship: approved_courses
+     *
+     * A user with admin role may approve courses
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    protected function approved_courses() {
+        return $this->hasMany('App\Zcourses');
+    }
 }
