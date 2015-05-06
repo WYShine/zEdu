@@ -25,7 +25,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 */
 	protected $fillable = ['name', 'email', 'password',
         'gender', 'phone', 'organization', 'department',
-        'position', 'role'];
+        'position', 'role', 'confirmation_code'];
 
 	/**
 	 * The attributes excluded from the model's JSON form.
@@ -64,5 +64,14 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      */
     protected function approved_courses() {
         return $this->hasMany('App\Zcourses');
+    }
+
+    /**
+     * Confirm user's registration
+     */
+    public function confirm() {
+        $this->confirmed = true;
+        $this->confirmation_code = null;
+        $this->save();
     }
 }
