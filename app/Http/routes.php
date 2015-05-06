@@ -19,3 +19,16 @@ Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
+
+
+Route::group(['namespace' => 'Teacher'], function() {
+	Route::resource('teachers.courses', 'CourseController');
+});
+
+Route::group(['namespace' => 'Admin'], function(){
+	Route::resource('admins.courses', 'CourseController');
+	Route::resource('admins.users', 'UserController');
+	Route::resource('admins.accounts', 'AccountController');
+});
+
+
