@@ -28,7 +28,8 @@ class AddIpPortToZaccounts extends Migration {
 	{
 		Schema::table('zresources', function(Blueprint $table)
 		{
-			$table->dropColumns(['ip', 'port']);
+			$table->dropColumn('ip');
+            $table->dropColumn('port');
 		});
 	}
 
