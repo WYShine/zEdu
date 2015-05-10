@@ -30,7 +30,10 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
-		return view('home');
+        $nav_title = 'Home';
+		return view('home', [
+            'nav_title' => $nav_title
+        ]);
 	}
 
 }
