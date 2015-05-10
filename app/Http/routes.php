@@ -19,6 +19,9 @@ Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
+Route::group(['namespace' => 'User'], function() {
+	Route::resource('users.accounts', 'AccountController');
+});
 
 
 Route::group(['namespace' => 'Teacher'], function() {
