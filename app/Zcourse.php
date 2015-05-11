@@ -4,6 +4,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Zcourse extends Model {
 
+    const STATE_PENDING = 'pending',
+        STATE_CLOSED = 'closed',
+        STATE_USING = 'using',
+        STATE_DISAPPROVED = 'disapproved';
+
     /**
      * The database table used by the model.
      *

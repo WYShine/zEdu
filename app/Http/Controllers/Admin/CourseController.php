@@ -12,7 +12,7 @@ class CourseController extends Controller {
      */
     public function index() {
         $nav_title = 'Applications Management';
-        $state = \Request::input('state', 'pending');
+        $state = \Request::input('state', Zcourse::STATE_PENDING);
         $zcourses = Zcourse::where('state', '=', $state)
             ->orderBy('id', 'DESC')
             ->get();
@@ -31,7 +31,7 @@ class CourseController extends Controller {
      */
     public function update($zcourseId) {
         $zcourse = Zcourse::find($zcourseId);
-        if (\Request::input('state') === 'closed') {
+        if (\Request::input('state') === Zcourse::STATE_CLOSED) {
             $zcourse->closed_reason = 'Closed by admin: ' . \Auth::user()->email;
         }
         $zcourse->update(\Request::only(['state']));
