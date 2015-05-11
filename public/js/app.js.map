@@ -1,1 +1,0 @@
-{"version":3,"sources":["directives/test.js"],"names":[],"mappings":"AAAA;AACA;AACA;AACA;AACA","file":"app.js","sourcesContent":["!function() {\n\n    console.log('test');\n\n}();"],"sourceRoot":"/source/"}
