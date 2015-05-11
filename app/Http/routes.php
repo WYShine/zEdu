@@ -28,7 +28,10 @@ Route::group(['namespace' => 'Teacher', 'prefix' => 'teacher'], function() {
     ]);
 });
 
-Route::group(['namespace' => 'Admin'], function(){
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function(){
+    Route::resource('courses', 'CourseController', [
+        'only' => ['index']
+    ]);
 //	Route::resource('users.courses', 'CourseController');
 //	Route::resource('users.users', 'UserController');
 //	Route::resource('users.accounts', 'AccountController');
