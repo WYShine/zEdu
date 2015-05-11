@@ -16,7 +16,7 @@ class Zcourse extends Model {
      *
      * @var array
      */
-    protected $fillable = ['name', 'application_note'];
+    protected $fillable = ['name', 'application_note', 'zpattern_id'];
 
     /**
      * Many to one relationship: user
@@ -26,7 +26,7 @@ class Zcourse extends Model {
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     protected function applicant()  {
-        return $this->hasOne('App\User');
+        return $this->belongsTo('App\User');
     }
 
 
@@ -38,7 +38,7 @@ class Zcourse extends Model {
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     protected function approver() {
-        return $this->hasOne('App\User');
+        return $this->belongsTo('App\User');
     }
 
 
@@ -58,9 +58,9 @@ class Zcourse extends Model {
      *
      * The pattern of this course
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\belongsTo
      */
     protected function zpattern() {
-        return $this->hasOne('App\Zpattern');
+        return $this->belongsTo('App\Zpattern');
     }
 }

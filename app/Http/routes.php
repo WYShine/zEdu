@@ -11,7 +11,8 @@
 |
 */
 
-Route::get('/', 'WelcomeController@index');
+Route::get('/', array('uses' => 'WelcomeController@index',
+    'as' => 'home'));
 
 Route::get('home', 'HomeController@index');
 
@@ -21,14 +22,16 @@ Route::controllers([
 ]);
 
 
-Route::group(['namespace' => 'Teacher'], function() {
-	Route::resource('teachers.courses', 'CourseController');
+Route::group(['namespace' => 'Teacher', 'prefix' => 'teacher'], function() {
+	Route::resource('courses', 'CourseController', [
+        'only' => ['create', 'store', 'index']
+    ]);
 });
 
 Route::group(['namespace' => 'Admin'], function(){
-	Route::resource('admins.courses', 'CourseController');
-	Route::resource('admins.users', 'UserController');
-	Route::resource('admins.accounts', 'AccountController');
+//	Route::resource('users.courses', 'CourseController');
+//	Route::resource('users.users', 'UserController');
+//	Route::resource('users.accounts', 'AccountController');
 });
 
 
