@@ -3,6 +3,7 @@
 use App\Http\Controllers\Controller;
 use App\Zcourse;
 use App\Zpattern;
+use Illuminate\Database\Eloquent\Builder;
 
 class CourseController extends Controller {
     /**
@@ -18,11 +19,31 @@ class CourseController extends Controller {
         ]);
     }
 
+    /**
+     * Store a new course
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function store() {
         $zcourse = new Zcourse(\Request::all());
         $zcourse->applicant_id = \Auth::user()->id;
         $zcourse->save();
 
         return redirect(\URL::route('teacher.courses.index'));
+    }
+
+    /**
+     * Show all course applications of the teacher
+     *
+     * @return \Illuminate\View\View
+     */
+    public function index() {
+        $nav_title = 'My Applications';
+        $zcourses = Zcourse::where('applicant_id',  '=', \Auth::user()->id)
+            ->get();
+        return view('teacher/courses/index', [
+            'nav_title' => $nav_title,
+            'zcourses' => $zcourses
+        ]);
     }
 }
