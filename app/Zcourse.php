@@ -16,7 +16,7 @@ class Zcourse extends Model {
      *
      * @var array
      */
-    protected $fillable = [];
+    protected $fillable = ['name', 'application_note'];
 
     /**
      * Many to one relationship: user
@@ -51,5 +51,16 @@ class Zcourse extends Model {
      */
     protected function zresource() {
         return $this->hasOne('App\Zresource');
+    }
+
+    /**
+     * Many to one relationship
+     *
+     * The pattern of this course
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    protected function zpattern() {
+        return $this->hasOne('App\Zpattern');
     }
 }
