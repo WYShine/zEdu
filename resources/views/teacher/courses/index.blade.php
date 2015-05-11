@@ -18,7 +18,7 @@
                 <td>{{$zcourse->name}}</td>
                 <td>{{$zcourse->zpattern->description}}</td>
                 <td>{{$zcourse->state}}</td>
-                <td>@include ('teacher/courses/_create_operations')</td>
+                <td>@include ('teacher.courses._index_operations')</td>
             </tr>
         @endforeach
     </tbody>

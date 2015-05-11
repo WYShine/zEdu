@@ -40,6 +40,7 @@ class CourseController extends Controller {
     public function index() {
         $nav_title = 'My Applications';
         $zcourses = Zcourse::where('applicant_id',  '=', \Auth::user()->id)
+            ->orderBy('id', 'DESC')
             ->get();
         return view('teacher/courses/index', [
             'nav_title' => $nav_title,
