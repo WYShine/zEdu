@@ -24,7 +24,7 @@ Route::controllers([
 
 Route::group(['namespace' => 'Teacher', 'prefix' => 'teacher'], function() {
 	Route::resource('courses', 'CourseController', [
-        'only' => ['create', 'store', 'index']
+        'only' => ['create', 'store', 'index', 'show']
     ]);
 });
 

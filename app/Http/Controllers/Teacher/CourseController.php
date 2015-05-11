@@ -47,4 +47,18 @@ class CourseController extends Controller {
             'zcourses' => $zcourses
         ]);
     }
+
+    /**
+     * Show a specific course
+     *
+     * @return \Illuminate\View\View
+     */
+    public function show($courseId) {
+        $zcourse = Zcourse::find($courseId);
+        $nav_itle = 'My Applications';
+        return view('teacher/courses/show', [
+            'zcourse' => $zcourse,
+            'nav_title' => $nav_itle
+        ]);
+    }
 }
