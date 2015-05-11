@@ -6,5 +6,8 @@
         <li role="presentation" class={{$nav_title=="New Application"?"active":""}}>
             <a href="{{URL::route('teacher.courses.create')}}">New Application</a>
         </li>
+        <li role="presentation" class={{$nav_title=="My Applications"?"active":""}}>
+            <a href="{{URL::route('teacher.courses.index')}}">My Applications</a>
+        </li>
     @endif
 </ul>
