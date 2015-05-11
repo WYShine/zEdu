@@ -16,7 +16,7 @@ class Zcourse extends Model {
      *
      * @var array
      */
-    protected $fillable = ['name', 'application_note', 'zpattern_id'];
+    protected $fillable = ['name', 'application_note', 'zpattern_id', 'state'];
 
     /**
      * Many to one relationship: user
