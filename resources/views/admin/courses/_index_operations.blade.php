@@ -1,4 +1,4 @@
 @if ($state === 'pending')
-    <a href>Approve</a>
+    <a href zd-approve-course>Approve</a>
     <a href>Disapprove</a>
 @endif

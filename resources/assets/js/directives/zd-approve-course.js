@@ -1,5 +1,13 @@
-!function() {
+!function(app) {
 
-    console.log('test');
+   app.directive('zdApproveCourse', function() {
+       return {
+           link: function(scope, el) {
+                $(el).on('click', function() {
+                    console.log('hello');
+                });
+           }
+       }
+   });
 
-}();
+}(app);
