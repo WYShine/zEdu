@@ -21,6 +21,9 @@ Route::controllers([
 	'password' => 'Auth\PasswordController',
 ]);
 
+Route::resource('users', 'UserController', [
+    'only' => ['show']
+]);
 
 Route::group(['namespace' => 'Teacher', 'prefix' => 'teacher'], function() {
 	Route::resource('courses', 'CourseController', [

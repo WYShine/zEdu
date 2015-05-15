@@ -1,3 +1,7 @@
+<?php
+    if (!isset($nav_title)) $nav_title = '';
+?>
+
 <ul class="nav nav-pills nav-stacked">
     <li role="presentation" class={{$nav_title=="Home"?"active":""}}>
         <a href="{{URL::route('home')}}">Home</a>
