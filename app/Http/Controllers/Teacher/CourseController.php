@@ -61,4 +61,20 @@ class CourseController extends Controller {
             'nav_title' => $nav_itle
         ]);
     }
+
+    /**
+     * Update course
+     *
+     * @param $zcourseId
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function update($zcourseId) {
+        $zcourse = Zcourse::find($zcourseId);
+        $user = \Auth::user();
+        if (\Request::input('state') === Zcourse::STATE_CLOSED) {
+            $zcourse->closed_reason = "Closed by {$user->role}: {$user->email}";
+        }
+        $zcourse->update(\Request::only(['state']));
+        return \Redirect::back();
+    }
 }
