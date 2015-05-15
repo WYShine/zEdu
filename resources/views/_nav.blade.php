@@ -2,6 +2,9 @@
     <li role="presentation" class={{$nav_title=="Home"?"active":""}}>
         <a href="{{URL::route('home')}}">Home</a>
     </li>
+    <li role="presentation" class={{$nav_title=="Security"?"active":""}}>
+        <a href="{{URL::route('home')}}">Security</a>
+    </li>
     @if (Auth::user()->role === "teacher" || Auth::user()->role === "admin")
         <hr/>
         <li role="presentation" class={{$nav_title=="New Application"?"active":""}}>
