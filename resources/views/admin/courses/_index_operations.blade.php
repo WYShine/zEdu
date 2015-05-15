@@ -15,7 +15,7 @@
     'method' => 'PUT',
     'url' => '/admin/courses/' . $zcourse->id
     ]) !!}
-    {!!Form::hidden('state','closed')!!}
+    {!!Form::hidden('state','disapproved')!!}
     <div class="form-group">
         {!! Form::submit('Disapprove', ['class'=>'btn btn-primary btn-sm form-control']) !!}
     </div>
