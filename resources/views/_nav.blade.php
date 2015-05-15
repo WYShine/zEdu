@@ -20,8 +20,11 @@
     @endif
     @if (Auth::user()->role === "admin")
         <hr/>
-        <li role="presentation" class={{$nav_title=="Applications Management"?"active":""}}>
-            <a href="{{URL::route('admin.courses.index')}}">Applications Management</a>
+        <li role="presentation" class={{$nav_title=="Applications"?"active":""}}>
+            <a href="{{URL::route('admin.courses.index')}}">Applications</a>
+        </li>
+        <li role="presentation" class={{$nav_title=="Users"?"active":""}}>
+            <a href="{{URL::route('admin.users.index')}}">Users</a>
         </li>
     @endif
 </ul>

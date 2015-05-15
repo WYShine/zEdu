@@ -11,7 +11,7 @@ class CourseController extends Controller {
      * @return \Illuminate\View\View
      */
     public function index() {
-        $nav_title = 'Applications Management';
+        $nav_title = 'Applications';
         $state = \Request::input('state', Zcourse::STATE_PENDING);
         $zcourses = Zcourse::where('state', '=', $state)
             ->orderBy('id', 'DESC')
