@@ -25,6 +25,7 @@
             <th>Name</th>
             <th>Pattern</th>
             <th>Status</th>
+            <th>Applicant</th>
             <th>Operations</th>
         </tr>
         </thead>
@@ -35,6 +36,7 @@
                 <td>{{$zcourse->name}}</td>
                 <td>{{$zcourse->zpattern->description}}</td>
                 <td>{{$zcourse->state}}</td>
+                <td><a href="{{\URL::route('users.show', ['user' => \Auth::user()])}}">{{\Auth::user()->name}}</a></td>
                 <td>@include ('admin.courses._index_operations')</td>
             </tr>
         @endforeach
