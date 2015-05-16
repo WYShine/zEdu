@@ -26,5 +26,8 @@
         <li role="presentation" class={{$nav_title=="Users"?"active":""}}>
             <a href="{{URL::route('admin.users.index')}}">Users</a>
         </li>
+        <li role="presentation" class={{$nav_title=="Resources"?"active":""}}>
+            <a href="{{URL::route('admin.resources.index')}}">Resources</a>
+        </li>
     @endif
 </ul>
