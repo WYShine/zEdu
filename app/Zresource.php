@@ -30,4 +30,8 @@ class Zresource extends Model {
     protected function zcourse() {
         return $this->hasOne('App\Zcourse');
     }
+
+    protected function zpattern() {
+        return $this->belongsTo('App\Zpattern');
+    }
 }
