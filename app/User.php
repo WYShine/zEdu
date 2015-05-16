@@ -52,7 +52,8 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     protected function applied_courses() {
-        return $this->hasMany('App\Zcourse', 'applicant_id');
+        return $this->hasMany('App\Zcourse', 'applicant_id')
+            ->orderBy('id', 'DESC');
     }
 
     /**
@@ -63,7 +64,8 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     protected function approved_courses() {
-        return $this->hasMany('App\Zcourse', 'approver_id');
+        return $this->hasMany('App\Zcourse', 'approver_id')
+            ->orderBy('id', 'DESC');
     }
 
     /**

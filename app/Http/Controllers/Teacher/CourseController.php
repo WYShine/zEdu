@@ -38,10 +38,9 @@ class CourseController extends Controller {
      * @return \Illuminate\View\View
      */
     public function index() {
+        $user = \Auth::user();
         $nav_title = 'My Applications';
-        $zcourses = Zcourse::where('applicant_id',  '=', \Auth::user()->id)
-            ->orderBy('id', 'DESC')
-            ->get();
+        $zcourses = $user->applied_courses;
         return view('teacher/courses/index', [
             'nav_title' => $nav_title,
             'zcourses' => $zcourses
@@ -54,12 +53,10 @@ class CourseController extends Controller {
      * @return \Illuminate\View\View
      */
     public function show($courseId) {
-        $zcourse = Zcourse::find($courseId);
-        $nav_itle = 'My Applications';
-        return view('teacher/courses/show', [
-            'zcourse' => $zcourse,
-            'nav_title' => $nav_itle
-        ]);
+        $user = \Auth::user();
+        $zcourse = $user->applied_courses->find($courseId);
+        $nav_title = 'My Applications';
+        return view('teacher/courses/show', compact('zcourse', 'nav_title'));
     }
 
     /**
