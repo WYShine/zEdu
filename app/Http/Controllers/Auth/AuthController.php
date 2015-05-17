@@ -69,6 +69,7 @@ class AuthController extends Controller {
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
+     * @todo Check if user is confirmed
      */
     public function postLogin(Request $request)
     {

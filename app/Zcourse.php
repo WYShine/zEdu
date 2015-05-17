@@ -4,6 +4,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Zcourse extends Model {
 
+    const STATE_PENDING = 'pending',
+        STATE_CLOSED = 'closed',
+        STATE_USING = 'using',
+        STATE_DISAPPROVED = 'disapproved';
+
     /**
      * The database table used by the model.
      *
@@ -16,7 +21,7 @@ class Zcourse extends Model {
      *
      * @var array
      */
-    protected $fillable = [];
+    protected $fillable = ['name', 'application_note', 'zpattern_id', 'state'];
 
     /**
      * Many to one relationship: user
@@ -26,7 +31,7 @@ class Zcourse extends Model {
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     protected function applicant()  {
-        return $this->hasOne('App\User');
+        return $this->belongsTo('App\User');
     }
 
 
@@ -38,7 +43,7 @@ class Zcourse extends Model {
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     protected function approver() {
-        return $this->hasOne('App\User');
+        return $this->belongsTo('App\User');
     }
 
 
@@ -51,5 +56,16 @@ class Zcourse extends Model {
      */
     protected function zresource() {
         return $this->hasOne('App\Zresource');
+    }
+
+    /**
+     * Many to one relationship
+     *
+     * The pattern of this course
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\belongsTo
+     */
+    protected function zpattern() {
+        return $this->belongsTo('App\Zpattern');
     }
 }

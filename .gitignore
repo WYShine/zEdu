@@ -4,3 +4,6 @@
 .idea/
 _ide_helper*
 .phpstorm.meta.php
+resources/assets/bower_components
+public/js
+public/css

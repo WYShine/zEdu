@@ -1,4 +1,5 @@
-var elixir = require('laravel-elixir');
+var elixir = require('laravel-elixir'),
+    path = require('path');
 
 /*
  |--------------------------------------------------------------------------
@@ -11,6 +12,13 @@ var elixir = require('laravel-elixir');
  |
  */
 
+function bowerPath(assetPath) {
+    return path.resolve('resources/assets/bower_components', assetPath);
+}
+
 elixir(function(mix) {
-    mix.less('app.less');
+    mix.less('app.less')
+        .copy(bowerPath('jquery/dist/jquery.js'), 'public/js/jquery.js')
+        .copy(bowerPath('angular/angular.js'), 'public/js/angular.js')
+        .scripts(['**/*.js'], 'public/js/app.js');
 });

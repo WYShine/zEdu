@@ -28,7 +28,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">Z Education</a>
+                <a class="navbar-brand" href="#">Z Education</a>
 			</div>
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -55,7 +55,16 @@
         
 	</nav>
 
-	@yield('content')
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2">
+                @include('_nav')
+            </div>
+            <div class="col-md-10">
+                @yield('content')
+            </div>
+        </div>
+    </div>
 
 	<!-- Scripts -->
     @include('_scripts')
