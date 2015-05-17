@@ -2,10 +2,27 @@
 
 use App\Http\Controllers\Controller;
 use App\Services\Telnet;
+use App\Zaccount;
+
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class Account extends Controller {
 	public function store($userId) {
-		
+		try {
+			$account = Zaccount::where("state", "=", "available")->firstOrFail();
+			$account->state = "using";
+			$account->user_id = $userId;
+			$account->save();
+			$user = User::find($userId);
+			$user->zaccount_id = $account->id;
+			$user->applied_account = 1;
+			$user->save();
+			$this->connectMain();
+			return $account->id;
+		} catch (ModelNotFoundException $e) {
+			//没有可用的账号
+			return "无可用账号";
+		}
 	}
 
 	private function connectMain() {
