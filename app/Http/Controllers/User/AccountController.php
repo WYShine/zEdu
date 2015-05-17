@@ -2,18 +2,36 @@
 
 use App\Http\Controllers\Controller;
 use App\Services\Telnet;
+use App\User;
 use App\Zaccount;
 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
-class Account extends Controller {
-	public function store($userId) {
+class AccountController extends Controller {
+
+
+	public function create() {
+		$nav_title = 'TSO Account';
+		$user = \Auth::user();
+		if($user->zaccount) {
+			$account = $user->zaccount;
+		} else {
+			$account = null;
+		}
+		return view('user/accounts/create', [
+			'nav_title' => $nav_title,
+			'user' => $user,
+			'account' => $account
+		]);
+	}
+
+	public function store() {
 		try {
 			$account = Zaccount::where("state", "=", "available")->firstOrFail();
 			$account->state = "using";
-			$account->user_id = $userId;
+			$account->user_id = \Auth::user()->id;
 			$account->save();
-			$user = User::find($userId);
+			$user = \Auth::user();
 			$user->zaccount_id = $account->id;
 			$user->applied_account = 1;
 			$user->save();
