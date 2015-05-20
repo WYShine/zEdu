@@ -13,4 +13,14 @@ class UserController extends Controller {
             'nav_title' => $nav_title
         ]);
     }
+
+    public function update($id) {
+        $user = User::find($id);
+        if (\Request::input('role') === 'teacher' &&
+            $user->role != 'admin') {
+            $user->update(\Request::only(['role']));
+        }
+        $user->save();
+        return \Redirect::back();
+    }
 }

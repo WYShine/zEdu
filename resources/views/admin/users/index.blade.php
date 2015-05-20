@@ -8,6 +8,7 @@
             <th>Name</th>
             <th>Role</th>
             <th>Email</th>
+            <th>Operations</th>
         </tr>
         </thead>
         <tbody>
@@ -17,6 +18,7 @@
                 <td><a href="{{URL::route('users.show',['user'=>$user])}}">{{$user->name}}</a></td>
                 <td>{{$user->role}}</td>
                 <th>{{$user->email}}</th>
+                <th>@include('admin/users/_index_operations')</th>
             </tr>
         @endforeach
         </tbody>

@@ -45,7 +45,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function(){
 
 
     Route::resource('users', 'UserController', [
-        'only' => ['index']
+        'only' => ['index', 'update']
     ]);
 
 //	Route::resource('users.courses', 'CourseController');
