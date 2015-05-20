@@ -31,7 +31,8 @@ class CourseController extends Controller {
      */
     public function update($zcourseId) {
         $zcourse = Zcourse::find($zcourseId);
-        if (count($zcourse->zpattern->zresources) === 0) {
+        if (\Request::input('state') === Zcourse::STATE_USING &&
+            count($zcourse->zpattern->zresources_available) === 0) {
             return \Redirect::back();
         }
         $user = \Auth::user();

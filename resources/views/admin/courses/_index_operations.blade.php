@@ -1,5 +1,5 @@
 @if ($state === 'pending')
-    @if (count($zcourse->zpattern->zresources) > 0)
+    @if (count($zcourse->zpattern->zresources_available) > 0)
     {!! Form::open([
             'class' => 'form-inline form-inline-self',
             'method' => 'PUT',

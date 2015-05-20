@@ -35,4 +35,8 @@ class Zpattern extends Model {
         return $this->hasMany('App\Zresource');
     }
 
+    protected function zresources_available() {
+        return $this->hasMany('App\Zresource')
+            ->where('state', '=', 'available');
+    }
 }

@@ -1,8 +1,8 @@
 @extends('app-menu')
 
 @section('content')
-    <header>
-        <div class="dropdown">
+    <header class="clearfix">
+        <div class="pull-left dropdown">
             <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 State: {{$state}}
                 <span class="caret"></span>
@@ -13,6 +13,12 @@
                 <li><a href="{{URL::current().'?state='.\App\Zresource::STATE_CLOSED}}">{{\App\Zresource::STATE_CLOSED}}</a></li>
                 <li><a href="{{URL::current().'?state='.\App\Zresource::STATE_AVAILABLE}}">{{\App\Zresource::STATE_AVAILABLE}}</a></li>
             </ul>
+        </div>
+        
+        <div class="pull-right">
+            <a href="{{URL::route('admin.resources.create')}}" class="btn btn-primary">
+                <span class="glyphicon glyphicon-plus"></span> Create
+            </a>
         </div>
     </header>
 
