@@ -37,7 +37,15 @@ class CourseController extends Controller {
         }
         $user = \Auth::user();
         if (\Request::input('state') === Zcourse::STATE_CLOSED) {
+            // Close application
             $zcourse->closed_reason = "Closed by {$user->role}: {$user->email}";
+        }
+        if (\Request::input('state') === Zcourse::STATE_USING) {
+            // Approve application
+            $zcourse->zresource_id = $zcourse->zpattern->zresources_available->first();
+            $zcourse->zresource->state = \App\Zresource::STATE_USING;
+            $zcourse->zresource->save();
+            $zcourse->save();
         }
         $zcourse->update(\Request::only(['state']));
         return \Redirect::back();
