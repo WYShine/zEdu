@@ -36,15 +36,51 @@ class DatabaseSeeder extends Seeder {
         $zpatterns = new \Illuminate\Database\Eloquent\Collection();
         $zpatterns->push(\App\Zpattern::create([
             'description' => 'DB2, CICS, ACCOUNT',
+            'capacity' => 'small'
+        ]));
+        $zpatterns->push(\App\Zpattern::create([
+            'description' => 'DB2, CICS, ACCOUNT',
+            'capacity' => 'medium'
+        ]));
+        $zpatterns->push(\App\Zpattern::create([
+            'description' => 'DB2, CICS, ACCOUNT',
+            'capacity' => 'large'
         ]));
         $zpatterns->push(\App\Zpattern::create([
             'description' => 'DB2, ACCOUNT',
+            'capacity' => 'small'
+        ]));
+        $zpatterns->push(\App\Zpattern::create([
+            'description' => 'DB2, ACCOUNT',
+            'capacity' => 'medium'
+        ]));
+        $zpatterns->push(\App\Zpattern::create([
+            'description' => 'DB2, ACCOUNT',
+            'capacity' => 'large'
         ]));
         $zpatterns->push(\App\Zpattern::create([
             'description' => 'CICS, ACCOUNT',
+            'capacity' => 'small'
+        ]));
+        $zpatterns->push(\App\Zpattern::create([
+            'description' => 'CICS, ACCOUNT',
+            'capacity' => 'medium'
+        ]));
+        $zpatterns->push(\App\Zpattern::create([
+            'description' => 'CICS, ACCOUNT',
+            'capacity' => 'large'
         ]));
         $zpatterns->push(\App\Zpattern::create([
             'description' => 'ACCOUNT',
+            'capacity' => 'small'
+        ]));;
+        $zpatterns->push(\App\Zpattern::create([
+            'description' => 'ACCOUNT',
+            'capacity' => 'medium'
+        ]));;
+        $zpatterns->push(\App\Zpattern::create([
+            'description' => 'ACCOUNT',
+            'capacity' => 'large'
         ]));;
 
 

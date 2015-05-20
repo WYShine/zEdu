@@ -17,7 +17,7 @@ class Zpattern extends Model {
      *
      * @var array
      */
-    protected $fillable = [];
+    protected $fillable = ['capacity', 'description'];
 
 
     /**

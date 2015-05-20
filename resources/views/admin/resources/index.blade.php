@@ -26,7 +26,6 @@
         <thead>
         <tr>
             <th>Resource ID</th>
-            <th>Pattern ID</th>
             <th>Pattern</th>
             <th>State</th>
             <th>Operations</th>
@@ -36,7 +35,6 @@
         @foreach ($zresources as $zresource)
             <tr>
                 <td>{{$zresource->id}}</td>
-                <td>{{$zresource->zpattern->id}}</td>
                 <td>{{$zresource->zpattern->description}}</td>
                 <td>{{$zresource->state}}</td>
                 <td>@include ('admin.resources._index_operations')</td>

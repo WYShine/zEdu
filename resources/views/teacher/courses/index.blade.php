@@ -6,7 +6,7 @@
        <tr>
            <th>#</th>
            <th>Name</th>
-           <th>Pattern</th>
+           <th>Resource</th>
            <th>Status</th>
            <th>Operations</th>
        </tr>
