@@ -27,6 +27,7 @@
         <tr>
             <th>Resource ID</th>
             <th>Pattern</th>
+            <th>Capacity</th>
             <th>State</th>
             <th>Operations</th>
         </tr>
@@ -36,6 +37,7 @@
             <tr>
                 <td>{{$zresource->id}}</td>
                 <td>{{$zresource->zpattern->description}}</td>
+                <td>{{$zresource->zpattern->capacity}}</td>
                 <td>{{$zresource->state}}</td>
                 <td>@include ('admin.resources._index_operations')</td>
             </tr>

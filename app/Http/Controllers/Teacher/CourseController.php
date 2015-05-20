@@ -13,9 +13,12 @@ class CourseController extends Controller {
      */
     public function create() {
         $nav_title = 'New Application';
+        $patterns = array_unique(array_map(function($zpattern) {
+            return $zpattern['description'];
+        }, Zpattern::all()->toArray()));
         return view('teacher/courses/create', [
             'nav_title' => $nav_title,
-            'zpatterns' => Zpattern::all()
+            'patterns' => $patterns
         ]);
     }
 
@@ -25,8 +28,13 @@ class CourseController extends Controller {
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function store() {
-        $zcourse = new Zcourse(\Request::all());
+        $zcourse = new Zcourse(\Request::except(['pattern', 'capacity']));
+        $zpattern = Zpattern::where('description', '=', \Request::input('pattern'))
+            ->where('capacity', '=', \Request::input('capacity'))
+            ->get()
+            ->first();
         $zcourse->applicant_id = \Auth::user()->id;
+        $zcourse->zpattern_id = $zpattern->id;
         $zcourse->save();
 
         return redirect(\URL::route('teacher.courses.index'));

@@ -22,12 +22,18 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         {!! Form::label('pattern_id', 'Resource:') !!}
-                        @foreach($zpatterns as $zpattern)
+                        <?php $i = 0; ?>
+                        @foreach($patterns as $pattern)
                             <div class="radio">
                                 <label>
-                                    {!! Form::radio('zpattern_id', $zpattern->id) !!} {{$zpattern->description}}
+                                    @if ($i == 0)
+                                        {!! Form::radio('pattern', $pattern, true) !!} {{$pattern}}
+                                    @else
+                                        {!! Form::radio('pattern', $pattern, false) !!} {{$pattern}}
+                                    @endif
                                 </label>
                             </div>
+                            <?php $i ++; ?>
                         @endforeach
                     </div>
                 </div>
@@ -36,7 +42,7 @@
                         {!! Form::label('capacity', 'Capacity:') !!}
                         <div class="radio">
                             <label data-toggle="tooltip" data-placement="left" title="10 teacher accounts; 10 student accounts">
-                                {!! Form::radio('capacity', 'small', false) !!} Small
+                                {!! Form::radio('capacity', 'small', true) !!} Small
                             </label>
                         </div>
                         <div class="radio">

@@ -7,6 +7,7 @@
            <th>#</th>
            <th>Name</th>
            <th>Resource</th>
+           <th>Capacity</th>
            <th>Status</th>
            <th>Operations</th>
        </tr>
@@ -17,6 +18,7 @@
                 <td>{{$zcourse->id}}</td>
                 <td>{{$zcourse->name}}</td>
                 <td>{{$zcourse->zpattern->description}}</td>
+                <td>{{$zcourse->zpattern->capacity}}</td>
                 <td>{{$zcourse->state}}</td>
                 <td>@include ('teacher.courses._index_operations')</td>
             </tr>

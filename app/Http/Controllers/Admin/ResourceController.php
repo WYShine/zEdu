@@ -33,9 +33,11 @@ class ResourceController extends Controller {
 	public function create()
 	{
         $nav_title = $this->nav_title;
-        $zpatterns = \App\Zpattern::all();
+        $patterns = array_unique(array_map(function($zpattern) {
+            return $zpattern['description'];
+        }, \App\Zpattern::all()->toArray()));
 
-		return view('admin/resources/create', compact('nav_title', 'zpatterns'));
+		return view('admin/resources/create', compact('nav_title', 'patterns'));
 	}
 
 	/**
@@ -46,14 +48,18 @@ class ResourceController extends Controller {
 	public function store()
 	{
 		$count = \Request::input('count', 1);
-        $zpattern_id = \Request::input('zpattern_id');
+        $zpattern = \App\Zpattern::where('description', '=', \Request::input('pattern'))
+            ->where('capacity', '=', \Request::input('capacity'))
+            ->get()
+            ->first();
+        $zpattern_id = $zpattern->id;
         for ($i = 0; $i < $count; $i ++) {
             Zresource::create([
                 'zpattern_id' => $zpattern_id,
-                'password_teacher' => '0000',
-                'password_student' => '0000',
-                'ip' => '192.168.0.1',
-                'port' => '3389'
+                'password_teacher' => env('Z_TEACHER_PWD', '0000'),
+                'password_student' => env('Z_STUDENT_PWD', '0000'),
+                'ip' => env('Z_IP', '192.168.0.1'),
+                'port' => env('Z_PORT', '3389')
             ]);
         }
 	}
