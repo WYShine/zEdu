@@ -1,6 +1,21 @@
 @extends('app-menu')
 
 @section('content')
+    <header>
+        <div class="dropdown">
+            <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                State: {{$state}}
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                <li><a href="{{URL::current().'?state='.\App\Zresource::STATE_PENDING}}">{{\App\Zcourse::STATE_PENDING}}</a></li>
+                <li><a href="{{URL::current().'?state='.\App\Zresource::STATE_USING}}">{{\App\Zcourse::STATE_USING}}</a></li>
+                <li><a href="{{URL::current().'?state='.\App\Zresource::STATE_CLOSED}}">{{\App\Zcourse::STATE_CLOSED}}</a></li>
+                <li><a href="{{URL::current().'?state='.\App\Zresource::STATE_AVAILABLE}}">{{\App\Zcourse::STATE_DISAPPROVED}}</a></li>
+            </ul>
+        </div>
+    </header>
+
     <table class="table">
         <thead>
         <tr>

@@ -18,8 +18,11 @@ class ResourceController extends Controller {
 	public function index()
 	{
         $nav_title = $this->nav_title;
-        $zresources = \App\Zresource::all();
-		return view('admin/resources/index', compact('nav_title', 'zresources'));
+        $state = \Request::input('state', Zresource::STATE_PENDING);
+        $zresources = \App\Zresource::where('state', '=', $state)
+            ->orderBy('id', 'DESC')
+            ->get();
+		return view('admin/resources/index', compact('nav_title', 'zresources', 'state'));
 	}
 
 	/**

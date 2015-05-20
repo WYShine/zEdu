@@ -5,6 +5,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Zresource extends Model {
 
+    const STATE_PENDING = 'pending',
+        STATE_CLOSED = 'closed',
+        STATE_USING = 'using',
+        STATE_AVAILABLE = 'available';
+
     /**
      * The database table used by the model.
      *
