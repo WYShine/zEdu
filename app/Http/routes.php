@@ -20,6 +20,9 @@ Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
+Route::group(['namespace' => 'User'], function() {
+	Route::resource('accounts', 'AccountController');
+});
 
 Route::resource('users', 'UserController', [
     'only' => ['show']
