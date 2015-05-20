@@ -28,18 +28,7 @@
         </div>
         {!! Form::close() !!}
     @else
-        {!! Form::open([
-        'class' => 'form-inline form-inline-self',
-        'method' => 'PUT',
-        'url' => '/admin/courses/' . $zcourse->id
-        ]) !!}
-        {!!Form::hidden('state','using')!!}
-        <div class="form-group">
-            <button class="btn btn-sm btn-link" disabled type="submit">
-                <span class="glyphicon glyphicon-ok glyphicon-with-right-margin"></span>
-            </button>
-        </div>
-        {!! Form::close() !!}
+        <!-- stupid -->
     @endif
 @endif
 
