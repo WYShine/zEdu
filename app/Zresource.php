@@ -23,7 +23,7 @@ class Zresource extends Model {
      * @var array
      */
     protected $fillable = ['zpattern_id', 'password_teacher', 'password_student',
-        'ip', 'port'];
+        'ip', 'port', 'state'];
 
 
     /**

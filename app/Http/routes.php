@@ -37,7 +37,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function(){
     ]);
 
     Route::resource('resources', 'ResourceController', [
-        'only' => ['index', 'create', 'store']
+        'only' => ['index', 'create', 'store', 'update']
     ]);
 
 

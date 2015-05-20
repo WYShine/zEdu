@@ -8,10 +8,10 @@
                 <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                <li><a href="{{URL::current().'?state='.\App\Zresource::STATE_PENDING}}">{{\App\Zcourse::STATE_PENDING}}</a></li>
-                <li><a href="{{URL::current().'?state='.\App\Zresource::STATE_USING}}">{{\App\Zcourse::STATE_USING}}</a></li>
-                <li><a href="{{URL::current().'?state='.\App\Zresource::STATE_CLOSED}}">{{\App\Zcourse::STATE_CLOSED}}</a></li>
-                <li><a href="{{URL::current().'?state='.\App\Zresource::STATE_AVAILABLE}}">{{\App\Zcourse::STATE_DISAPPROVED}}</a></li>
+                <li><a href="{{URL::current().'?state='.\App\Zresource::STATE_PENDING}}">{{\App\Zresource::STATE_PENDING}}</a></li>
+                <li><a href="{{URL::current().'?state='.\App\Zresource::STATE_USING}}">{{\App\Zresource::STATE_USING}}</a></li>
+                <li><a href="{{URL::current().'?state='.\App\Zresource::STATE_CLOSED}}">{{\App\Zresource::STATE_CLOSED}}</a></li>
+                <li><a href="{{URL::current().'?state='.\App\Zresource::STATE_AVAILABLE}}">{{\App\Zresource::STATE_AVAILABLE}}</a></li>
             </ul>
         </div>
     </header>
@@ -23,6 +23,7 @@
             <th>Pattern ID</th>
             <th>Pattern</th>
             <th>State</th>
+            <th>Operations</th>
         </tr>
         </thead>
         <tbody>
@@ -32,6 +33,7 @@
                 <td>{{$zresource->zpattern->id}}</td>
                 <td>{{$zresource->zpattern->description}}</td>
                 <td>{{$zresource->state}}</td>
+                <td>@include ('admin.resources._index_operations')</td>
             </tr>
         @endforeach
         </tbody>

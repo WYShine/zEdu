@@ -18,7 +18,7 @@ class ResourceController extends Controller {
 	public function index()
 	{
         $nav_title = $this->nav_title;
-        $state = \Request::input('state', Zresource::STATE_PENDING);
+        $state = \Request::input('state', Zresource::STATE_AVAILABLE);
         $zresources = \App\Zresource::where('state', '=', $state)
             ->orderBy('id', 'DESC')
             ->get();
@@ -88,7 +88,13 @@ class ResourceController extends Controller {
 	 */
 	public function update($id)
 	{
-		//
+        $zresource = Zresource::find($id);
+        $user = \Auth::user();
+        if (\Request::input('state') === Zresource::STATE_CLOSED) {
+            $zcourse->closed_reason = "Closed by {$user->role}: {$user->email}";
+        }
+        $zresource->update(\Request::only(['state']));
+        return \Redirect::back();
 	}
 
 	/**
