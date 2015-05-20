@@ -31,6 +31,9 @@ class CourseController extends Controller {
      */
     public function update($zcourseId) {
         $zcourse = Zcourse::find($zcourseId);
+        if (count($zcourse->zpattern->zresources) === 0) {
+            return \Redirect::back();
+        }
         $user = \Auth::user();
         if (\Request::input('state') === Zcourse::STATE_CLOSED) {
             $zcourse->closed_reason = "Closed by {$user->role}: {$user->email}";

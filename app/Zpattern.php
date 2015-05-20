@@ -31,4 +31,8 @@ class Zpattern extends Model {
         return $this->hasMany('App\Zcourse');
     }
 
+    protected function zresources() {
+        return $this->hasMany('App\Zresource');
+    }
+
 }

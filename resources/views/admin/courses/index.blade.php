@@ -34,7 +34,10 @@
             <tr>
                 <td>{{$zcourse->id}}</td>
                 <td>{{$zcourse->name}}</td>
-                <td>{{$zcourse->zpattern->description}}</td>
+                <td>
+                    {{$zcourse->zpattern->description}}
+                    <span class="label label-default">{{count($zcourse->zpattern->zresources)}}</span>
+                </td>
                 <td>{{$zcourse->state}}</td>
                 <td><a href="{{\URL::route('users.show', ['user' => \Auth::user()])}}">{{\Auth::user()->name}}</a></td>
                 <td>@include ('admin.courses._index_operations')</td>

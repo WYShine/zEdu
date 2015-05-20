@@ -1,4 +1,5 @@
 @if ($state === 'pending')
+    @if (count($zcourse->zpattern->zresources) > 0)
     {!! Form::open([
             'class' => 'form-inline form-inline-self',
             'method' => 'PUT',
@@ -9,6 +10,7 @@
             {!! Form::submit('Approve', ['class'=>'btn btn-sm btn-link']) !!}
         </div>
     {!! Form::close() !!}
+    @endif
 
     {!! Form::open([
     'class' => 'form-inline form-inline-self',
