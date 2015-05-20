@@ -24,6 +24,9 @@
             <th>#</th>
             <th>Name</th>
             <th>Pattern</th>
+            @if ($state === 'pending')
+            <th>Resource</th>
+            @endif
             <th>Status</th>
             <th>Applicant</th>
             <th>Operations</th>
@@ -34,10 +37,10 @@
             <tr>
                 <td>{{$zcourse->id}}</td>
                 <td>{{$zcourse->name}}</td>
-                <td>
-                    {{$zcourse->zpattern->description}}
-                    <span class="label label-default">{{count($zcourse->zpattern->zresources_available)}}</span>
-                </td>
+                <td>{{$zcourse->zpattern->description}}</td>
+                @if ($state === 'pending')
+                <td>{{count($zcourse->zpattern->zresources_available)}}</td>
+                @endif
                 <td>{{$zcourse->state}}</td>
                 <td><a href="{{\URL::route('users.show', ['user' => \Auth::user()])}}">{{\Auth::user()->name}}</a></td>
                 <td>@include ('admin.courses._index_operations')</td>
@@ -46,5 +49,7 @@
         </tbody>
     </table>
 </div>
+
+
 
 @endsection

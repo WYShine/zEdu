@@ -18,16 +18,41 @@
                 'placeholder' => 'Leave a message here'
                 ]) !!}
             </div>
-            <div class="form-group">
-                {!! Form::label('pattern_id', 'Pattern:') !!}
-                @foreach($zpatterns as $zpattern)
-                <div class="radio">
-                    <label>
-                        {!! Form::radio('zpattern_id', $zpattern->id) !!} {{$zpattern->description}}
-                    </label>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        {!! Form::label('pattern_id', 'Pattern:') !!}
+                        @foreach($zpatterns as $zpattern)
+                            <div class="radio">
+                                <label>
+                                    {!! Form::radio('zpattern_id', $zpattern->id) !!} {{$zpattern->description}}
+                                </label>
+                            </div>
+                        @endforeach
+                    </div>
                 </div>
-                @endforeach
+                <div class="col-md-6">
+                    <div class="form-group">
+                        {!! Form::label('capacity', 'Capacity:') !!}
+                        <div class="radio">
+                            <label data-toggle="tooltip" data-placement="left" title="10 teacher accounts; 10 student accounts">
+                                {!! Form::radio('capacity', 'small', false) !!} Small
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label data-toggle="tooltip" data-placement="left" title="10 teacher accounts; 50 student accounts">
+                                {!! Form::radio('capacity', 'medium', false) !!} Medium
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label data-toggle="tooltip" data-placement="left" title="10 teacher accounts; 100 student accounts">
+                                {!! Form::radio('capacity', 'large', false) !!} Large
+                            </label>
+                        </div>
+                    </div>
+                </div>
             </div>
+
             <div class="row">
                 <div class="col-md-3">
                     <div class="form-group">

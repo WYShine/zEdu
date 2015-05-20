@@ -1,3 +1,5 @@
+<a class="btn btn-sm btn-link" href="{{URL::route('teacher.courses.show', ['course' => $zcourse])}}">Details</a>
+
 @if ($zcourse->state === \App\Zcourse::STATE_PENDING)
     {!! Form::open([
     'class' => 'form-inline form-inline-self',
@@ -9,8 +11,4 @@
         {!! Form::submit('Close', ['class'=>'btn btn-sm btn-link']) !!}
     </div>
     {!! Form::close() !!}
-@endif
-
-@if ($zcourse->state === \App\Zcourse::STATE_USING)
-    <a class="btn btn-sm btn-link" href="{{URL::route('teacher.courses.show', ['course' => $zcourse])}}">View</a>
 @endif

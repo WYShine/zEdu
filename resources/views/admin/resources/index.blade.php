@@ -9,9 +9,9 @@
             </button>
             <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                 <li><a href="{{URL::current().'?state='.\App\Zresource::STATE_PENDING}}">{{\App\Zresource::STATE_PENDING}}</a></li>
+                <li><a href="{{URL::current().'?state='.\App\Zresource::STATE_AVAILABLE}}">{{\App\Zresource::STATE_AVAILABLE}}</a></li>
                 <li><a href="{{URL::current().'?state='.\App\Zresource::STATE_USING}}">{{\App\Zresource::STATE_USING}}</a></li>
                 <li><a href="{{URL::current().'?state='.\App\Zresource::STATE_CLOSED}}">{{\App\Zresource::STATE_CLOSED}}</a></li>
-                <li><a href="{{URL::current().'?state='.\App\Zresource::STATE_AVAILABLE}}">{{\App\Zresource::STATE_AVAILABLE}}</a></li>
             </ul>
         </div>
         

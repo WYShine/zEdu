@@ -3,6 +3,9 @@
 @section('content')
     <h3>{{$zcourse->name}}</h3>
     <hr/>
+
+
+    @if ($zcourse->state === \App\Zcourse::STATE_USING)
     <div class="panel panel-default">
         <div class="panel-heading">
             <h3 class="panel-title">Mainframe Information</h3>
@@ -50,4 +53,5 @@
             </ul>
         </div>
     </div>
+    @endif
 @endsection

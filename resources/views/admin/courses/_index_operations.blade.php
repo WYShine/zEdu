@@ -1,17 +1,4 @@
 @if ($state === 'pending')
-    @if (count($zcourse->zpattern->zresources_available) > 0)
-    {!! Form::open([
-            'class' => 'form-inline form-inline-self',
-            'method' => 'PUT',
-            'url' => '/admin/courses/' . $zcourse->id
-        ]) !!}
-        {!!Form::hidden('state','using')!!}
-        <div class="form-group">
-            {!! Form::submit('Approve', ['class'=>'btn btn-sm btn-link']) !!}
-        </div>
-    {!! Form::close() !!}
-    @endif
-
     {!! Form::open([
     'class' => 'form-inline form-inline-self',
     'method' => 'PUT',
@@ -19,9 +6,41 @@
     ]) !!}
     {!!Form::hidden('state','disapproved')!!}
     <div class="form-group">
-        {!! Form::submit('Disapprove', ['class'=>'btn btn-sm btn-link']) !!}
+        <button class="btn btn-sm btn-link" type="submit"
+                data-toggle="tooltip" data-placement="right" title="Disapprove">
+            <span class="glyphicon glyphicon-remove glyphicon-with-right-margin"></span>
+        </button>
     </div>
     {!! Form::close() !!}
+
+    @if (count($zcourse->zpattern->zresources) > 0)
+        {!! Form::open([
+        'class' => 'form-inline form-inline-self',
+        'method' => 'PUT',
+        'url' => '/admin/courses/' . $zcourse->id
+        ]) !!}
+        {!!Form::hidden('state','using')!!}
+        <div class="form-group">
+            <button class="btn btn-sm btn-link" type="submit"
+                    data-toggle="tooltip" data-placement="right" title="Approve">
+                <span class="glyphicon glyphicon-ok glyphicon-with-right-margin"></span>
+            </button>
+        </div>
+        {!! Form::close() !!}
+    @else
+        {!! Form::open([
+        'class' => 'form-inline form-inline-self',
+        'method' => 'PUT',
+        'url' => '/admin/courses/' . $zcourse->id
+        ]) !!}
+        {!!Form::hidden('state','using')!!}
+        <div class="form-group">
+            <button class="btn btn-sm btn-link" disabled type="submit">
+                <span class="glyphicon glyphicon-ok glyphicon-with-right-margin"></span>
+            </button>
+        </div>
+        {!! Form::close() !!}
+    @endif
 @endif
 
 @if ($state === 'using')
