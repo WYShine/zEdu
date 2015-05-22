@@ -1,6 +1,35 @@
 @extends('app-menu')
 
 @section('content')
+    <div class="query-filter">
+        <section>
+            <form class="form">
+                <div class="form-group form-group-nest">
+                    <label for="state"><strong>State</strong></label> &nbsp;&nbsp;&nbsp;
+                    <div class="radio-inline">
+                        <label>
+                            <input type="radio" name="state" value="pending"/> Pending
+                        </label>
+                    </div>
+                    <div class="radio-inline">
+                        <label>
+                            <input type="radio" name="state" value="available"/> Available
+                        </label>
+                    </div>
+                    <div class="radio-inline">
+                        <label>
+                            <input type="radio" name="state" value="using"/> Using
+                        </label>
+                    </div>
+                    <div class="radio-inline">
+                        <label>
+                            <input type="radio" name="state" value="closed"/> Closed
+                        </label>
+                    </div>
+                </div>
+            </form>
+        </section>
+    </div>
     <header class="clearfix">
         <div class="pull-left dropdown">
             <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

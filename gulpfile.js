@@ -20,5 +20,6 @@ elixir(function(mix) {
     mix.less('app.less')
         .copy(bowerPath('jquery/dist/jquery.js'), 'public/js/jquery.js')
         .copy(bowerPath('angular/angular.js'), 'public/js/angular.js')
+        .copy(bowerPath('jquery-deparam/jquery-deparam.js'), 'public/js/jquery-deparam.js')
         .scripts(['**/*.js'], 'public/js/app.js');
 });

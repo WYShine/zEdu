@@ -62,6 +62,7 @@ class ResourceController extends Controller {
                 'port' => env('Z_PORT', '3389')
             ]);
         }
+        return \Redirect::route('admin.resources.index');
 	}
 
 	/**
