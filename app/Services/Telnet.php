@@ -3,6 +3,11 @@
 class Telnet {
 	var $sock = NULL;
 
+	function __construct($host,$port){
+	  $this->sock = fsockopen($host,$port);
+	  socket_set_timeout($this->sock,2,0);
+	 }
+
 	function telnet($host, $port) {
 		$this->sock = fsockopen($host, $port);
 		socket_set_timeout($this->sock, 2, 0);

@@ -48,6 +48,10 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function(){
         'only' => ['index', 'update']
     ]);
 
+    Route::resource('demonstration', 'DemoController', [
+        'only' => ['index', 'create', 'store']
+        ]);
+
 //	Route::resource('users.courses', 'CourseController');
 //	Route::resource('users.users', 'UserController');
 //	Route::resource('users.accounts', 'AccountController');
