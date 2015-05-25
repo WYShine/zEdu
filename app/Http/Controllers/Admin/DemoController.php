@@ -3,6 +3,7 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Services\Telnet;
+use App\Services\FTP;
 
 use Illuminate\Http\Request;
 
@@ -25,17 +26,17 @@ class DemoController extends Controller {
 			}
 			if($_GET['type'] == 'uCICS'){
 				return view('admin/demonstration/uninstallCICS', [
-					'nav_title' => "Install CICS"
+					'nav_title' => "Uninstall CICS"
 					]);
 			}
 			if($_GET['type'] == 'iDB2'){
 				return view('admin/demonstration/installDB2', [
-					'nav_title' => "Install CICS"
+					'nav_title' => "Install DB2"
 					]);
 			}
 			if($_GET['type'] == 'uDB2'){
 				return view('admin/demonstration/uninstallDB2', [
-					'nav_title' => "Install CICS"
+					'nav_title' => "Uninstall DB2"
 					]);
 			}
 		}
@@ -63,39 +64,61 @@ class DemoController extends Controller {
 	}
 
 	protected function installCICS($CICS_id){
+		$telnet = $this->getTelnet();
+		$telnet->write("tso exec \"'ZCLOUD.CICS.REXX(CIINSTM) '\" \"'". $CICS_id. "'\" \r\n");
+		$telnet->close();
+		$ftp = new FTP($CICS_id);
+		$logs = $ftp->getLog();
+		return view('admin/demonstration/showLogs', [
+					'nav_title' => "Show Logs",
+					'logs'    =>  $logs;
+					]);
+	}
 
+
+
+	protected function uninstallCICS($CICS_id){
+		$telnet = $this->getTelnet();
+		$telnet->write("tso exec \"'ZCLOUD.CICS.REXX(CIUNINM) '\" \"'". $CICS_id. "'\" \r\n");
+		$telnet->close();
+		$ftp = new FTP($CICS_id);
+		$logs = $ftp->getLog();
+		return view('admin/demonstration/showLogs', [
+					'nav_title' => "Show Logs",
+					'logs'    =>  $logs;
+					]);
+	}
+
+	protected function installDB2($DB2_id){
+		$telnet = $this->getTelnet();
+		$telnet->write("tso exec \"'ZCLOUD.DB2.REXX(@AAAA) '\" \"'". $DB2_id. "'\" \r\n");
+		$telnet->close();
+		$ftp = new FTP($DB2_id);
+		$logs = $ftp->getLog();
+		return view('admin/demonstration/showLogs', [
+					'nav_title' => "Show Logs",
+					'logs'    =>  $logs;
+					]);
+	}
+
+	protected function uninstallDB2($DB2_id){
+		$telnet = $this->getTelnet();
+		$telnet->write("tso exec \"'ZCLOUD.DB2.REXX(师太还没告诉我) '\" \"'". $DB2_id. "'\" \r\n");
+		$telnet->close();
+		$ftp = new FTP($DB2_id);
+		$logs = $ftp->getLog();
+		return view('admin/demonstration/showLogs', [
+					'nav_title' => "Show Logs",
+					'logs'    =>  $logs;
+					]);
+	}
+
+	protected function getTelnet(){
 		$telnet = new Telnet("10.60.43.6",23);
 		echo $telnet->read_till("login:");
 		$telnet->write("ADM035\r\n");
 		echo $telnet->read_till("password:");
 		$telnet->write("dfdf\r\n");//enter your password
 		echo $telnet->read_till(":>");
-		$telnet->write("tso exec \"'ZCLOUD.CICS.REXX(CIINSTM)'\"\r\n");//tso command
-		echo $telnet->read_till(":>");
-		
-		// ob_end_clean();  
-		// ob_implicit_flush(1);  
-		// while(1){  
-		// 	$log = $telnet->read_till("\r\n");
-		//     //部分浏览器需要内容达到一定长度了才输出  
-		//     echo $log; 
-		//     sleep(1);  
-		//     //ob_end_flush();  
-		//     //ob_flush();  
-		//     //flush();  
-		// }
-		$telnet->close();
-	}
-
-	protected function uninstallCICS($CICS_id){
-		echo $CICS_id;
-	}
-
-	protected function installDB2($DB2_id){
-		echo $DB2_id;
-	}
-
-	protected function uninstallDB2($DB2_id){
-		echo $DB2_id;
 	}
 }
